@@ -2,9 +2,9 @@
 
 Authors
 
-- [Daniela Güeme](https://github.com/Guemez)
+- [Daniela Güemz](https://github.com/Guemez)
 - [Guillermo Herrera](https://github.com/memoherreraacosta)
-- [Sebastián Sern](https://github.com/sernap97)
+- [Sebastián Sera](https://github.com/sernap97)
 - [Karol Gutierrez](https://github.com/karol22)
 
 
