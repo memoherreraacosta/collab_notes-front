@@ -1,4 +1,4 @@
-# Puzzles
+# Collab Note
 
 Authors
 
@@ -9,21 +9,20 @@ Authors
 
 
 # About the project
-Puzzles is an interactive web application that will challenge the user in various ways, testing knowledge on a variety of things or even simple intuition. The users will have an account and ranking within the page and will be able to see top charts. Additionally, users will be able to upload their own puzzles to the web app and challenge the other users to solve it.
+Collab Note is a platform that aspires to create a space for all the students enrolled in a class to share resources with each other in order to have a complete pull of resources to support the class learning. 
 
 
 # Major Requirements
-- The user has an account that keeps track of how many puzzles they have solved
-- The user can search for other users and challenges
-- The user is able to rate a challenge once they have completed it
-- The user can follow other users to keep up with any new challenges they make
+- The user has an account that keeps information of the courses they are in
+- The user can search for their class and join
+- The user is able to share documents and images into this space for everyone to see
+- The access to the spaces is restricted
 - Friendly and intuitive UI
 
-
 # Project Goals
-- Offer users a unique experience in which they must use their skills to complete challenges.
-- Give users the opportunity to create challenges for the world to try
-- The user develops logic abilities and problem solving skills
+- Offer a space where students of a class can share resources in one space removing the need of having to have friends/ know people on a class
+- A space that will be useful to catch up on stuff you missed from a class if you missed it for any reason
+
 
 
 # Sneak Peak
@@ -31,9 +30,11 @@ Puzzles is an interactive web application that will challenge the user in variou
 
 
 # Schedule
-- February: project definition and scope, define scope, organize schedule and assign tasks to team members
-- March: Use auth0 for user accounts, create base puzzle
-- April: Create additional puzzles, top user charts
-- May: Functionality to allow users to upload puzzles
-- June: Implement last features and solve bugs
+First partial:  
+- Research and train React, Docker, Go with Gorilla, auth0, styled components, what database to use
+- Mock up in paper of the site pages
+- Define architecture
+- Docker dockerfile
+- Authentication using Auth0
+
 
