@@ -38,6 +38,11 @@ First partial:
 - Authentication using Auth0
 
 -------------------------------------------------------------------------
+## Set up
+
+- Create `.env` file and fill the content form the `.env.example` file.
+- Create `src/auth_config.json` file and fill the content form the `src/auth_config.json.example` file.
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
