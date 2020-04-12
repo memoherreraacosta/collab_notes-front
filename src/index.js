@@ -7,6 +7,7 @@ import * as serviceWorker from './serviceWorker';
 ReactDOM.render(
   <React.StrictMode>
     <App />
+    {process.env.REACT_APP_BACKEND_URL}
   </React.StrictMode>,
   document.getElementById('root')
 );
