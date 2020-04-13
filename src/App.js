@@ -6,6 +6,7 @@ import { Container } from "reactstrap";
 import Loading from "./components/Loading";
 import NavBar from "./components/NavBar";
 import Home from "./views/Home";
+import NoteEditor from "./views/NoteEditor";
 import Profile from "./views/Profile";
 import { useAuth0 } from "./auth/react-auth0-spa";
 import history from "./utils/history";
@@ -24,9 +25,12 @@ function App() {
         <Container className="flex-grow-1 mt-5">
           <Switch>
             <Route path="/" exact component={Home} />
-            {isAuthenticated &&
-              (<Route path="/profile" exact component={Profile} />)
-            }
+            {isAuthenticated &&(
+              <>
+                <Route path="/profile" exact component={Profile} />
+                <Route path="/create" exact component={NoteEditor} />
+              </>
+            )}
           </Switch>
         </Container>
       </div>

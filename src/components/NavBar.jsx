@@ -8,12 +8,7 @@ import {
   NavbarBrand,
   Nav,
   NavItem,
-  NavLink,
-  UncontrolledDropdown,
-  DropdownToggle,
-  DropdownMenu,
-  DropdownItem,
-  NavbarText
+  NavLink
 } from 'reactstrap';
 
 const NavBar = () => {
@@ -38,8 +33,11 @@ const NavBar = () => {
                   <NavLink>My Notes</NavLink>
                 </NavItem>  
                 <NavItem>
-                    <NavLink>Create</NavLink>
-                </NavItem>  
+                    <NavLink href='/create/'>Create</NavLink>
+                </NavItem>
+                <NavItem>
+                    <NavLink href='/profile/'>Profile</NavLink>
+                </NavItem>    
               </>
             )}
           </Nav>
