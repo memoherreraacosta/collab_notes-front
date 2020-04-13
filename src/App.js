@@ -1,22 +1,36 @@
+
 import React from "react";
-import NavBar from "./components/NavBar";
-import { useAuth0 } from "./auth/react-auth0-spa";
+import { Router, Route, Switch } from "react-router-dom";
+import { Container } from "reactstrap";
 
 import Loading from "./components/Loading";
+import NavBar from "./components/NavBar";
+import Home from "./views/Home";
+import Profile from "./views/Profile";
+import { useAuth0 } from "./auth/react-auth0-spa";
+import history from "./utils/history";
 
 function App() {
-  const { loading } = useAuth0();
+  const { loading, isAuthenticated } = useAuth0();
 
   if (loading) {
     return <Loading/>;
   }
 
   return (
-    <div className="App">
-      <header>
+    <Router history={history}>
+      <div id="app" className="d-flex flex-column h-100">
         <NavBar />
-      </header>
-    </div>
+        <Container className="flex-grow-1 mt-5">
+          <Switch>
+            <Route path="/" exact component={Home} />
+            {isAuthenticated &&
+              (<Route path="/profile" exact component={Profile} />)
+            }
+          </Switch>
+        </Container>
+      </div>
+    </Router>
   );
 }
 
