@@ -3,16 +3,23 @@ import { useAuth0 } from "../auth/react-auth0-spa";
 import {
   Button,
   Collapse,
+  DropdownToggle,
   Navbar,
   NavbarToggler,
   NavbarBrand,
   Nav,
   NavItem,
-  NavLink
+  NavLink,
+  UncontrolledDropdown,
+  DropdownMenu,
+  DropdownItem,
+  NavbarText
+
 } from 'reactstrap';
+import './style/NavBar.css'
 
 const NavBar = () => {
-  const { isAuthenticated, loginWithRedirect, logout } = useAuth0();
+  const { isAuthenticated, loginWithRedirect, logout, user } = useAuth0();
   const [isOpen, setIsOpen] = useState(false);
 
   const toggle = () => setIsOpen(!isOpen);
@@ -43,8 +50,17 @@ const NavBar = () => {
           </Nav>
           {!isAuthenticated ? (
               <Button onClick={() => loginWithRedirect()}>Log in</Button>
-            ):(
-              <Button onClick={() => logout()}>Log out</Button>
+            ):(  
+              <>
+                <img
+                  src={user.picture}
+                  alt="Profile"
+                  className="nav-user-profile rounded-circle"
+                  width="50"
+                />
+                <NavbarText className="name">{user.name}</NavbarText>
+                <Button onClick={() => logout()}>Log out</Button>
+            </>              
           )}
         </Collapse>
       </Navbar>
