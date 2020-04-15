@@ -1,0 +1,6 @@
+.carouselImage{
+    backdrop-filter: brightness(0.4);
+    filter: brightness(0.8);
+    width: 100%;
+    height: 500px;
+}
