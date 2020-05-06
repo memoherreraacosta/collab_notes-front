@@ -49,7 +49,7 @@ const NavBar = () => {
               <Button onClick={() => loginWithRedirect()}>Log in</Button>
             ):(  
               <>
-                  <UncontrolledDropdown nav inNavbar>
+                  <UncontrolledDropdown className="noBullet" nav inNavbar>
                     <DropdownToggle nav caret>
                         <img
                         src={user.picture}
