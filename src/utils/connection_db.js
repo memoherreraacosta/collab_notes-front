@@ -7,27 +7,9 @@ export const connection_db = async (query, is_select) => {
 
   url = api_gateway + url;
   try {
-    const data = await fetch(url, {
-      method: "OPTIONS",
-      headers: new Headers({
-        "Content-Type": "application/json",
-      }),
-    });
-    return await data.text();
+    const data = await fetch(url);
+    return await data.json();
   } catch (error) {
     console.log("Errorcito " + error);
   }
 };
-
-/* 
-Proof of concept
-
-{data.map(
-    (register, idx) => 
-        <Component 
-            key={i}
-            title={register.title} 
-            author={register.author} 
-            pages={register.pages}
-            freeBookmark={this.localVar.id}/>
-)} */
