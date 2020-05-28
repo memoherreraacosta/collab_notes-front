@@ -7,13 +7,15 @@ import Loading from "./components/Loading";
 import NavBar from "./components/NavBar";
 import Home from "./views/Home";
 import NoteEditor from "./views/NoteEditor";
+import MyNotes from "./views/MyNotes";
 import Profile from "./views/Profile";
 import { useAuth0 } from "./auth/react-auth0-spa";
 import history from "./utils/history";
+import { connection_db } from "./utils/connection_db";
 
 function App() {
+  console.log(connection_db("SELECT * FROM `collabnotes`.`CLASE`;", true));
   const { loading, isAuthenticated } = useAuth0();
-
   if (loading) {
     return <Loading/>;
   }
@@ -29,6 +31,7 @@ function App() {
               <>
                 <Route path="/profile" exact component={Profile} />
                 <Route path="/create" exact component={NoteEditor} />
+                <Route path="/mynotes" exact component={MyNotes} />
               </>
             )}
           </Switch>

@@ -37,14 +37,11 @@ const NavBar = () => {
             { isAuthenticated && (
               <>
                 <NavItem>
-                  <NavLink>My Notes</NavLink>
+                  <NavLink href='/mynotes/'>My Notes</NavLink>
                 </NavItem>  
                 <NavItem>
                     <NavLink href='/create/'>Create</NavLink>
-                </NavItem>
-                <NavItem>
-                    <NavLink href='/profile/'>Profile</NavLink>
-                </NavItem>    
+                </NavItem> 
               </>
             )}
           </Nav>
@@ -52,14 +49,29 @@ const NavBar = () => {
               <Button onClick={() => loginWithRedirect()}>Log in</Button>
             ):(  
               <>
-                <img
-                  src={user.picture}
-                  alt="Profile"
-                  className="nav-user-profile rounded-circle"
-                  width="50"
-                />
-                <NavbarText className="name">{user.name}</NavbarText>
-                <Button onClick={() => logout()}>Log out</Button>
+                  <UncontrolledDropdown className="noBullet" nav inNavbar>
+                    <DropdownToggle nav caret>
+                        <img
+                        src={user.picture}
+                        alt="Profile"
+                        className="nav-user-profile rounded-circle"
+                        width="50"
+                      />
+                      <NavbarText className="name">{user.name}</NavbarText>
+                    </DropdownToggle>
+                    <DropdownMenu right>
+                      <DropdownItem href='/profile/'>
+                        Profile
+                      </DropdownItem>
+                      <DropdownItem>
+                        Settings
+                      </DropdownItem>
+                      <DropdownItem divider />
+                      <DropdownItem>
+                        <Button onClick={() => logout()}>Log out</Button>
+                      </DropdownItem>
+                    </DropdownMenu>
+                </UncontrolledDropdown>
             </>              
           )}
         </Collapse>
