@@ -46,7 +46,10 @@ const NavBar = () => {
             )}
           </Nav>
           {!isAuthenticated ? (
-              <NavLink href='/login/'>Log in</NavLink>
+              <>
+                <NavLink href='/signup/'>Sign Up</NavLink>
+                <NavLink href='/login/'>Log in</NavLink>
+              </>
             ):(  
               <>
                   <UncontrolledDropdown className="noBullet" nav inNavbar>
