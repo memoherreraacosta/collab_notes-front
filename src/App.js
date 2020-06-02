@@ -9,6 +9,7 @@ import Home from "./views/Home";
 import NoteEditor from "./views/NoteEditor";
 import MyNotes from "./views/MyNotes";
 import Profile from "./views/Profile";
+import Login from "./views/Login";
 import { useAuth0 } from "./auth/react-auth0-spa";
 import history from "./utils/history";
 import { connection_db } from "./utils/connection_db";
@@ -27,11 +28,12 @@ function App() {
         <Container className="flex-grow-1 mt-5">
           <Switch>
             <Route path="/" exact component={Home} />
-            {isAuthenticated &&(
+            <Route path="/login" exact component={Login} />
+            {(isAuthenticated) ??(
               <>
-                <Route path="/profile" exact component={Profile} />
                 <Route path="/create" exact component={NoteEditor} />
                 <Route path="/mynotes" exact component={MyNotes} />
+                <Route path="/profile" exact component={Profile} />
               </>
             )}
           </Switch>

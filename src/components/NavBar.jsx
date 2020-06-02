@@ -46,7 +46,7 @@ const NavBar = () => {
             )}
           </Nav>
           {!isAuthenticated ? (
-              <Button onClick={() => loginWithRedirect()}>Log in</Button>
+              <NavLink href='/login/'>Log in</NavLink>
             ):(  
               <>
                   <UncontrolledDropdown className="noBullet" nav inNavbar>
