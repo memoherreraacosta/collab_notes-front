@@ -11,11 +11,11 @@ import MyNotes from "./views/MyNotes";
 import Profile from "./views/Profile";
 import { useAuth0 } from "./auth/react-auth0-spa";
 import history from "./utils/history";
+import { connection_db } from "./utils/connection_db";
 
 function App() {
+  console.log(connection_db("SELECT * FROM `collabnotes`.`CLASE`;", true));
   const { loading, isAuthenticated } = useAuth0();
-  console.log("Soy la app")
-
   if (loading) {
     return <Loading/>;
   }
