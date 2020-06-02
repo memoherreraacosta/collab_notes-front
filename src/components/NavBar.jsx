@@ -51,26 +51,26 @@ const NavBar = () => {
               <>
                   <UncontrolledDropdown className="noBullet" nav inNavbar>
                     <DropdownToggle nav caret>
+                        <NavbarText className="name">{user.name}</NavbarText>
                         <img
                         src={user.picture}
                         alt="Profile"
                         className="nav-user-profile rounded-circle"
                         width="50"
                       />
-                      <NavbarText className="name">{user.name}</NavbarText>
+                      <DropdownMenu right>
+                        <DropdownItem href='/profile/'>
+                          Profile
+                        </DropdownItem>
+                        <DropdownItem>
+                          Settings
+                        </DropdownItem>
+                        <DropdownItem divider />
+                        <DropdownItem>
+                          <Button onClick={() => logout()}>Log out</Button>
+                        </DropdownItem>
+                      </DropdownMenu>
                     </DropdownToggle>
-                    <DropdownMenu right>
-                      <DropdownItem href='/profile/'>
-                        Profile
-                      </DropdownItem>
-                      <DropdownItem>
-                        Settings
-                      </DropdownItem>
-                      <DropdownItem divider />
-                      <DropdownItem>
-                        <Button onClick={() => logout()}>Log out</Button>
-                      </DropdownItem>
-                    </DropdownMenu>
                 </UncontrolledDropdown>
             </>              
           )}
