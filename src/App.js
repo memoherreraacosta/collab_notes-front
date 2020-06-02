@@ -14,6 +14,7 @@ import history from "./utils/history";
 
 function App() {
   const { loading, isAuthenticated } = useAuth0();
+  console.log("Soy la app")
 
   if (loading) {
     return <Loading/>;
