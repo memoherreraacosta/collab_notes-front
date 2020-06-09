@@ -19,8 +19,15 @@ import {
 import './style/NavBar.css'
 
 const NavBar = () => {
-  const { isAuthenticated, loginWithRedirect, logout, user } = useAuth0();
+  const { loginWithRedirect, user } = useAuth0();
   const [isOpen, setIsOpen] = useState(false);
+  const isAuthenticated = () => {
+    return (document.cookie.indexOf('id') != -1)
+  }
+  const logout = () => {
+    document.cookie = 'id=; Path=/ expires=Thu, 01-Jan-70 00:00:01 GMT;';
+    document.cookie = 'name=; Path=/ expires=Thu, 01-Jan-70 00:00:01 GMT;';
+  }
 
   const toggle = () => setIsOpen(!isOpen);
 
@@ -34,7 +41,7 @@ const NavBar = () => {
             <NavItem>
                 <NavLink>Explore</NavLink>
             </NavItem>
-            { isAuthenticated && (
+            { isAuthenticated() && (
               <>
                 <NavItem>
                   <NavLink href='/mynotes/'>My Notes</NavLink>
@@ -45,7 +52,7 @@ const NavBar = () => {
               </>
             )}
           </Nav>
-          {!isAuthenticated ? (
+          {!isAuthenticated() ? (
               <>
                 <NavLink href='/signup/'>Sign Up</NavLink>
                 <NavLink href='/login/'>Log in</NavLink>
@@ -54,9 +61,9 @@ const NavBar = () => {
               <>
                   <UncontrolledDropdown className="noBullet" nav inNavbar>
                     <DropdownToggle nav caret>
-                        <NavbarText className="name">{user.name}</NavbarText>
+                        <NavbarText className="name">{user?.name}</NavbarText>
                         <img
-                        src={user.picture}
+                        src={user?.picture}
                         alt="Profile"
                         className="nav-user-profile rounded-circle"
                         width="50"

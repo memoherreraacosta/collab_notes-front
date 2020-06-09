@@ -16,7 +16,14 @@ import history from "./utils/history";
 import { connection_db } from "./utils/connection_db";
 
 function App() {
-  console.log(connection_db("SELECT * FROM `collabnotes`.`ESTUDIANTE`;", true));
+  const x = connection_db("SELECT * FROM `collabnotes`.`ESTUDIANTE`;", true);
+
+  const promise1 = Promise.resolve(x);
+
+  promise1.then((value) => {
+    console.log(value);
+  });
+
   const { loading, isAuthenticated } = useAuth0();
   if (loading) {
     return <Loading/>;
