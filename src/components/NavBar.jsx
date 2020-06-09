@@ -17,19 +17,17 @@ import {
 
 } from 'reactstrap';
 import './style/NavBar.css'
+import { isAuthenticated } from "./../utils/authenticated";
+import { getName } from "./../utils/getData";
 
 const NavBar = () => {
   const { loginWithRedirect, user } = useAuth0();
   const [isOpen, setIsOpen] = useState(false);
-  const isAuthenticated = () => {
-    return (document.cookie.indexOf('id') != -1)
-  }
   const logout = () => {
-    document.cookie = 'id=; Path=/ expires=Thu, 01-Jan-70 00:00:01 GMT;';
-    document.cookie = 'name=; Path=/ expires=Thu, 01-Jan-70 00:00:01 GMT;';
-  }
-  const getName = () => {
-    return document.cookie.replace(/(?:(?:^|.*;\s*)name\s*\=\s*([^;]*).*$)|^.*$/, "$1");
+    document.cookie = 'id=; Path=/; expires=Thu, 01-Jan-70 00:00:01 GMT;';
+    document.cookie = 'name=; Path=/; expires=Thu, 01-Jan-70 00:00:01 GMT;';
+    document.cookie = 'email=; Path=/; expires=Thu, 01-Jan-70 00:00:01 GMT;';
+    document.location.reload()
   }
 
   const toggle = () => setIsOpen(!isOpen);
