@@ -28,6 +28,9 @@ const NavBar = () => {
     document.cookie = 'id=; Path=/ expires=Thu, 01-Jan-70 00:00:01 GMT;';
     document.cookie = 'name=; Path=/ expires=Thu, 01-Jan-70 00:00:01 GMT;';
   }
+  const getName = () => {
+    return document.cookie.replace(/(?:(?:^|.*;\s*)name\s*\=\s*([^;]*).*$)|^.*$/, "$1");
+  }
 
   const toggle = () => setIsOpen(!isOpen);
 
@@ -61,13 +64,7 @@ const NavBar = () => {
               <>
                   <UncontrolledDropdown className="noBullet" nav inNavbar>
                     <DropdownToggle nav caret>
-                        <NavbarText className="name">{user?.name}</NavbarText>
-                        <img
-                        src={user?.picture}
-                        alt="Profile"
-                        className="nav-user-profile rounded-circle"
-                        width="50"
-                      />
+                        <NavbarText className="name">{getName()}</NavbarText>
                       <DropdownMenu right>
                         <DropdownItem href='/profile/'>
                           Profile
