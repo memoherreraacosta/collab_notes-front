@@ -1,24 +1,18 @@
 import React from "react";
-import { useAuth0 } from "../auth/react-auth0-spa";
 import { Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
 
+import { getName, getEmail } from "./../utils/getData";
+
 const Profile = () => {
-    const { user } = useAuth0();
     return (
         <Form>
             <FormGroup>
-                <img
-                    src={user.picture}
-                    alt="Profile"
-                    className="nav-user-profile rounded-circle"
-                    width="20%"
-                />
-                <h1>{user.name}</h1>
+                <h1><p>{getName()}</p></h1>
             </FormGroup>
             <br/>
             <FormGroup>
                 <Label>Email: </Label>
-                <p>{user.email}</p>
+                <p>{getEmail()}</p>
             </FormGroup>
             <br/>
             <FormGroup>
