@@ -10,6 +10,7 @@ import NoteEditor from "./views/NoteEditor";
 import MyNotes from "./views/MyNotes";
 import Profile from "./views/Profile";
 import Login from "./views/Login";
+import Upload from "./views/Upload";
 import SignUp from "./views/SignUp";
 import history from "./utils/history";
 import { connection_db } from "./utils/connection_db";
@@ -34,6 +35,7 @@ function App() {
             <Route path="/signup" exact component={SignUp} />
             <Route path="/create" exact component={NoteEditor} />
             <Route path="/mynotes" exact component={MyNotes} />
+            <Route path="/upload" exact component={Upload} />
             <Route path="/profile" exact component={Profile} />
             )}
           </Switch>
