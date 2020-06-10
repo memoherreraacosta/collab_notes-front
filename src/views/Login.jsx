@@ -36,7 +36,7 @@ class Login extends React.Component {
                     const user = value[0]
                     document.cookie =`id=${user.idEstudiante}; Path=/`
                     document.cookie =`name=${user.nombre}; Path=/`
-                    document.cookie =`name=${user.email}; Path=/`
+                    document.cookie =`email=${user.email}; Path=/`
                     
                 });
                 
