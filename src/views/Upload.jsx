@@ -21,14 +21,15 @@ class Upload extends React.Component {
         this.state={
             class_id:'',
             class_name: '',
-            archivos: [],
-            filename:''
+            filename:'',
+            archivos:[]
 
           }
         const queryString = window.location.search;
         const urlParams = new URLSearchParams(queryString);
         const classId = parseInt(urlParams.get('CLASS'))
         const className = urlParams.get('CLASSNAME')
+        const archivos =[];
         this.setState({class_id: classId})
         console.log("class id es ", classId);
         const query = `SELECT * FROM \`collabnotes\`.\`ARCHIVO\` WHERE idClase=${classId};`
@@ -48,12 +49,10 @@ class Upload extends React.Component {
                 const filename = this.state.filename;
                 const user_id = getId();
                 const query = `INSERT INTO \`collabnotes\`.\`ARCHIVO\` (url, titulo, idEstudiante, idClase) VALUES ('${url}', '${filename}', ${user_id}, ${classId});`
-                alert(query)
                 const x = connection_db(query, false);
                 const promise = Promise.resolve(x); 
                 promise.then((value) => {
                     console.log(value);
-                    this.setState({archivos: value, class_name: this.state.class_name})
             });
             })
             .catch((err)=>{
