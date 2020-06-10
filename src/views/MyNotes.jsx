@@ -24,8 +24,6 @@ class MyNotes extends React.Component {
     render(){
         return (
             <div >
-               <SearchBar />
-               <br/>
                 <div>
                     {
                     this.state.classes.map(function(x){

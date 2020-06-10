@@ -32,11 +32,11 @@ class Login extends React.Component {
                         alert("Invalid credentials")
                         return;
                     }
-                    alert("Loggeado con exito")
                     const user = value[0]
                     document.cookie =`id=${user.idEstudiante}; Path=/`
                     document.cookie =`name=${user.nombre}; Path=/`
                     document.cookie =`email=${user.email}; Path=/`
+                    window.location.replace("/");
                     
                 });
                 

@@ -26,7 +26,7 @@ class SignUp extends React.Component {
                 const hashed_pw = md5(password)
                const query = `INSERT INTO \`collabnotes\`.\`ESTUDIANTE\` (nombre, password, email) VALUES ('${name}', '${hashed_pw}', '${email}');`
                console.log(connection_db(query, false))
-               //console.log(connection_db("SELECT * FROM `collabnotes`.`ESTUDIANTE`;", true));
+               window.location.replace("/");
                 
             }
 

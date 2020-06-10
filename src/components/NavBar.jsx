@@ -39,20 +39,14 @@ const NavBar = () => {
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
           <Nav className="mr-auto" navbar>
-            <NavItem>
-                <NavLink>Explore</NavLink>
-            </NavItem>
             { isAuthenticated() && (
               <>
                 <NavItem>
                   <NavLink href='/mynotes/'>My Notes</NavLink>
                 </NavItem>
                 <NavItem>
-                    <NavLink href='/classes/'>Classes</NavLink>
-                </NavItem>  
-                <NavItem>
-                    <NavLink href='/create/'>Create</NavLink>
-                </NavItem> 
+                    <NavLink href='/classes/'>Create class</NavLink>
+                </NavItem>
               </>
             )}
           </Nav>
@@ -67,13 +61,6 @@ const NavBar = () => {
                     <DropdownToggle nav caret>
                         <NavbarText className="name">{getName()}</NavbarText>
                       <DropdownMenu right>
-                        <DropdownItem href='/profile/'>
-                          Profile
-                        </DropdownItem>
-                        <DropdownItem>
-                          Settings
-                        </DropdownItem>
-                        <DropdownItem divider />
                         <DropdownItem>
                           <Button onClick={() => logout()}>Log out</Button>
                         </DropdownItem>
