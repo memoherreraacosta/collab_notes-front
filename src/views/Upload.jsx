@@ -1,8 +1,8 @@
 import React from "react";
-import { Button, Form} from 'react-bootstrap';
+import {Form} from 'react-bootstrap';
 import S3 from 'react-aws-s3';
 import {connection_db} from './../utils/connection_db'
-import { ListGroup, ListGroupItem } from 'reactstrap';
+import { ListGroup, ListGroupItem, Button } from 'reactstrap';
 import { getId } from "./../utils/getData";
 
 
@@ -22,23 +22,35 @@ class Upload extends React.Component {
             class_id:'',
             class_name: '',
             filename:'',
-            archivos:[]
-
+            archivos:[],
+            partofclass: false
           }
         const queryString = window.location.search;
         const urlParams = new URLSearchParams(queryString);
         const classId = parseInt(urlParams.get('CLASS'))
         const className = urlParams.get('CLASSNAME')
+        const user_id = getId();
         const archivos =[];
         this.setState({class_id: classId})
         console.log("class id es ", classId);
+
+
         const query = `SELECT * FROM \`collabnotes\`.\`ARCHIVO\` WHERE idClase=${classId};`
         const x = connection_db(query, true);
-        const promise = Promise.resolve(x);
-        promise.then((value) => {
-            console.log(value);
+        const prom = Promise.resolve(x);
+        prom.then((value) => {
             this.setState({archivos: value, class_name: className})
         });
+
+
+        const queryIsPart = `SELECT * FROM \`collabnotes\`.\`ESTUDIANTE-CLASE\` WHERE clave=${classId} AND idEstudiante=${user_id};`
+        const x1 = connection_db(queryIsPart, true);
+        const promise = Promise.resolve(x1);
+        promise.then((value) => {
+            console.log("ANS: ", value);
+            this.setState({partofclass: value.length == 1});
+        });
+
         this.upload2 = (e) =>{
             console.log(e.target.files[0]);
             console.log(this.state)
@@ -47,7 +59,6 @@ class Upload extends React.Component {
                 console.log(data.location);
                 const url = data.location;
                 const filename = this.state.filename;
-                const user_id = getId();
                 const query = `INSERT INTO \`collabnotes\`.\`ARCHIVO\` (url, titulo, idEstudiante, idClase) VALUES ('${url}', '${filename}', ${user_id}, ${classId});`
                 const x = connection_db(query, false);
                 const promise = Promise.resolve(x); 
@@ -59,11 +70,35 @@ class Upload extends React.Component {
                 alert(err)
             })
         }
+
+        this.leaveClass = () =>{
+            const query = `DELETE FROM \`collabnotes\`.\`ESTUDIANTE-CLASE\` WHERE idEstudiante=${user_id} AND clave=${classId};`;
+            const x = connection_db(query, false);
+            const promise = Promise.resolve(x);
+            promise.then((value) => {
+                console.log(value);
+            });
+            document.location.reload();
+        }
+        this.joinClass = () =>{
+            const query = `INSERT INTO \`collabnotes\`.\`ESTUDIANTE-CLASE\` (idEstudiante, clave) VALUES (${user_id}, ${classId})`;
+            const x = connection_db(query, false);
+            const promise = Promise.resolve(x);
+            promise.then((value) => {
+                console.log(value);
+            });
+            document.location.reload();
+        }
     }
 
     render(){
         return(
             <div>
+                { this.state.partofclass  ? (
+                    <Button color="primary" onClick={() => this.leaveClass()}  className="float-right">Leave class</Button>
+                ):(
+                    <Button color="success" onClick={() => this.joinClass()}  className="float-right">Join class</Button>
+                )}
                 <h1>Notes from {this.state.class_name}</h1>
                 <br/>
                 <ListGroup>
