@@ -14,6 +14,7 @@ import Upload from "./views/Upload";
 import SignUp from "./views/SignUp";
 import history from "./utils/history";
 import { connection_db } from "./utils/connection_db";
+import Classes from "./views/Classes";
 import { isAuthenticated } from "./utils/authenticated";
 
 function App() {
@@ -37,6 +38,7 @@ function App() {
             <Route path="/mynotes" exact component={MyNotes} />
             <Route path="/upload" exact component={Upload} />
             <Route path="/profile" exact component={Profile} />
+            <Route path="/classes" exact component={Classes} />
             )}
           </Switch>
         </Container>

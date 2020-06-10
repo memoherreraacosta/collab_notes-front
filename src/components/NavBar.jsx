@@ -48,8 +48,8 @@ const NavBar = () => {
                   <NavLink href='/mynotes/'>My Notes</NavLink>
                 </NavItem>
                 <NavItem>
-                    <NavLink href='/upload/'>Upload</NavLink>
-                </NavItem>   
+                    <NavLink href='/classes/'>Classes</NavLink>
+                </NavItem>  
                 <NavItem>
                     <NavLink href='/create/'>Create</NavLink>
                 </NavItem> 

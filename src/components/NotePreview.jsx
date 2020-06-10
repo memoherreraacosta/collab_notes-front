@@ -8,15 +8,15 @@ const NotePreview = (props) => {
     <div>
       <Jumbotron>
         <h1 className="display-6">{props.subject}</h1>
-        <p className="lead onelinenote" >Note 1 of {props.subject}</p>
         <hr className="my-2" />
-        <p className="lead onelinenote" >Note 2 of {props.subject}</p>
+        <p className="lead onelinenote" >{props.description}</p>
         <p className="lead">
-          <Button color="primary">See more</Button>
+          <Button color="primary" href={'/upload?CLASS='+props.clave+'&CLASSNAME='+props.subject}>See more</Button>
         </p>
       </Jumbotron>
     </div>
   );
 };
+
 
 export default NotePreview;
