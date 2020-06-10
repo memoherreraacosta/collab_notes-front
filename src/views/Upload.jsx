@@ -2,36 +2,42 @@ import React from "react";
 import { Button, Form} from 'react-bootstrap';
 import S3 from 'react-aws-s3';
 
-const Upload = () => {
+const config = {
+    bucketName: 'a01632704',
+    region: 'us-east-2',
+    accessKeyId: 'AKIAJQDQ5GG2OTRZAFWA',
+    secretAccessKey: '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'
+}
 
-    const sendFile = () => {
-        console.log("hereee")
-        const config = {
-            bucketName: 'a01632704',
-            region: 'eu-east-2',
-            accessKeyId: 'AKIAJQDQ5GG2OTRZAFWA',
-            secretAccessKey: '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',
-            s3Url: 'https://a01632704.s3.us-east-2.amazonaws.com/'
-        }
-     
-        const ReactS3Client = new S3(config);
-        
-        const filename = 'myimage.png';
-        ReactS3Client
-        .uploadFile(filename)
-        .then(response => console.log(response))
-        .catch(err => console.error(err))
+const ReactS3Client = new S3(config);
+
+class Upload extends React.Component {
+    constructor(){
+        super();
     }
-
-    return (
-        <div>
-           <>
-               <button onClick={console.log("dsdsdsd")}>Upload your notes files</button>
-
-           </>
-        </div>
-            
-    );
-};
+    upload(e){
+        console.log(e.target.files[0]);
+        ReactS3Client.uploadFile(e.target.files[0], e.target.files[0].name)
+        .then((data)=>{
+            console.log(data.location);
+        })
+        .catch((err)=>{
+            alert(err)
+        })
+    }
+    render(){
+        return(
+            <div>
+                <h3>
+                    aws upload
+                </h3>
+                <input 
+                type="file"
+                onChange={this.upload}
+                />
+            </div>
+        )
+    }
+}
 
 export default Upload;
