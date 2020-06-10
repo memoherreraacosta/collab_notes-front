@@ -45,6 +45,9 @@ const NavBar = () => {
                   <NavLink href='/mynotes/'>My Notes</NavLink>
                 </NavItem>
                 <NavItem>
+                  <NavLink href='/myclasses/'>My Classes</NavLink>
+                </NavItem>
+                <NavItem>
                     <NavLink href='/classes/'>Create class</NavLink>
                 </NavItem>
               </>

@@ -12,6 +12,7 @@ import Profile from "./views/Profile";
 import Login from "./views/Login";
 import Upload from "./views/Upload";
 import SignUp from "./views/SignUp";
+import MyClasses from "./views/MyClasses";
 import history from "./utils/history";
 import { connection_db } from "./utils/connection_db";
 import Classes from "./views/Classes";
@@ -39,6 +40,7 @@ function App() {
             <Route path="/upload" exact component={Upload} />
             <Route path="/profile" exact component={Profile} />
             <Route path="/classes" exact component={Classes} />
+            <Route path="/myclasses" exact component={MyClasses} />
             )}
           </Switch>
         </Container>
