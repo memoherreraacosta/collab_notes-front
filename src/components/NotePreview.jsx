@@ -1,10 +1,6 @@
 import React from 'react';
 import { Jumbotron, Button } from 'reactstrap';
-import {connection_db} from './../utils/connection_db'
-import { getId } from "./../utils/getData";
-
 const NotePreview = (props) => {
-  const user_id = getId()
 
   return (
     <div>
