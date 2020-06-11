@@ -1,8 +1,6 @@
-
 import React from "react";
 import { Router, Route, Switch } from "react-router-dom";
 import { Container } from "reactstrap";
-import Loading from "./components/Loading";
 import NavBar from "./components/NavBar";
 import Home from "./views/Home";
 import NoteEditor from "./views/NoteEditor";
