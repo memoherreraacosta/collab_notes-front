@@ -22,7 +22,7 @@ class SignUp extends React.Component {
             const email = this.state.email
             const password = this.state.password
             const repeat_password = this.state.repeat_password
-            if( validateEmail(email) && password == repeat_password){
+            if( validateEmail(email) && password === repeat_password){
                 const hashed_pw = md5(password)
                const query = `INSERT INTO \`collabnotes\`.\`ESTUDIANTE\` (nombre, password, email) VALUES ('${name}', '${hashed_pw}', '${email}');`
                console.log(connection_db(query, false))

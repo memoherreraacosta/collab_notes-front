@@ -1,8 +1,6 @@
 import React from "react";
 import NotePreview from '../components/NotePreview';
-import SearchBar from '../components/SearchBar';
 import {connection_db} from './../utils/connection_db'
-import { render } from "@testing-library/react";
 import { getId } from "./../utils/getData";
 
 class MyClasses extends React.Component {
