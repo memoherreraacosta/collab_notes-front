@@ -3,15 +3,21 @@ import NotePreview from '../components/NotePreview';
 import SearchBar from '../components/SearchBar';
 import {connection_db} from './../utils/connection_db'
 import { render } from "@testing-library/react";
+import { getId } from "./../utils/getData";
 
-class MyNotes extends React.Component {
+class MyClasses extends React.Component {
     constructor(props){
         super(props);
         this.state={
           email:'',
           classes: []
         }
-        const x = connection_db("SELECT * FROM `collabnotes`.`CLASE`;", true);
+        const user_id = getId();
+        const query = "SELECT `collabnotes`.`ESTUDIANTE-CLASE`.clave, `collabnotes`.`CLASE`.nombre, `collabnotes`.`CLASE`.descripcion " 
+        + "FROM  `collabnotes`.`ESTUDIANTE-CLASE` " 
+        + "JOIN `collabnotes`.`CLASE` ON `collabnotes`.`ESTUDIANTE-CLASE`.clave = `collabnotes`.`CLASE`.clave " 
+        + "WHERE `collabnotes`.`ESTUDIANTE-CLASE`.idEstudiante =" + user_id + ";"
+        const x = connection_db(query, true);
         const promise = Promise.resolve(x);
         promise.then((value) => {
             console.log(value);
@@ -24,6 +30,7 @@ class MyNotes extends React.Component {
     render(){
         return (
             <div >
+                <h1>Your classes</h1>
                 <div>
                     {
                     this.state.classes.map(function(x){
@@ -42,4 +49,4 @@ class MyNotes extends React.Component {
     }
 };
 
-export default MyNotes;
+export default MyClasses;

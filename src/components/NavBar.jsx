@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { useAuth0 } from "../auth/react-auth0-spa";
 import {
   Button,
   Collapse,
@@ -17,10 +16,17 @@ import {
 
 } from 'reactstrap';
 import './style/NavBar.css'
+import { isAuthenticated } from "./../utils/authenticated";
+import { getName } from "./../utils/getData";
 
 const NavBar = () => {
-  const { isAuthenticated, loginWithRedirect, logout, user } = useAuth0();
   const [isOpen, setIsOpen] = useState(false);
+  const logout = () => {
+    document.cookie = 'id=; Path=/; expires=Thu, 01-Jan-70 00:00:01 GMT;';
+    document.cookie = 'name=; Path=/; expires=Thu, 01-Jan-70 00:00:01 GMT;';
+    document.cookie = 'email=; Path=/; expires=Thu, 01-Jan-70 00:00:01 GMT;';
+    document.location.reload()
+  }
 
   const toggle = () => setIsOpen(!isOpen);
 
@@ -31,46 +37,36 @@ const NavBar = () => {
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
           <Nav className="mr-auto" navbar>
-            <NavItem>
-                <NavLink>Explore</NavLink>
-            </NavItem>
-            { isAuthenticated && (
+            { isAuthenticated() && (
               <>
                 <NavItem>
-                  <NavLink href='/mynotes/'>My Notes</NavLink>
-                </NavItem>  
+                  <NavLink href='/mynotes/'>Explore</NavLink>
+                </NavItem>
                 <NavItem>
-                    <NavLink href='/create/'>Create</NavLink>
-                </NavItem> 
+                  <NavLink href='/myclasses/'>My Classes</NavLink>
+                </NavItem>
+                <NavItem>
+                    <NavLink href='/classes/'>Create class</NavLink>
+                </NavItem>
               </>
             )}
           </Nav>
-          {!isAuthenticated ? (
-              <Button onClick={() => loginWithRedirect()}>Log in</Button>
+          {!isAuthenticated() ? (
+              <>
+                <NavLink href='/signup/'>Sign Up</NavLink>
+                <NavLink href='/login/'>Log in</NavLink>
+              </>
             ):(  
               <>
                   <UncontrolledDropdown className="noBullet" nav inNavbar>
                     <DropdownToggle nav caret>
-                        <img
-                        src={user.picture}
-                        alt="Profile"
-                        className="nav-user-profile rounded-circle"
-                        width="50"
-                      />
-                      <NavbarText className="name">{user.name}</NavbarText>
+                        <NavbarText className="name">{getName()}</NavbarText>
+                      <DropdownMenu right>
+                        <DropdownItem>
+                          <Button onClick={() => logout()}>Log out</Button>
+                        </DropdownItem>
+                      </DropdownMenu>
                     </DropdownToggle>
-                    <DropdownMenu right>
-                      <DropdownItem href='/profile/'>
-                        Profile
-                      </DropdownItem>
-                      <DropdownItem>
-                        Settings
-                      </DropdownItem>
-                      <DropdownItem divider />
-                      <DropdownItem>
-                        <Button onClick={() => logout()}>Log out</Button>
-                      </DropdownItem>
-                    </DropdownMenu>
                 </UncontrolledDropdown>
             </>              
           )}
