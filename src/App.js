@@ -1,9 +1,6 @@
-
 import React from "react";
 import { Router, Route, Switch } from "react-router-dom";
 import { Container } from "reactstrap";
-
-import Loading from "./components/Loading";
 import NavBar from "./components/NavBar";
 import Home from "./views/Home";
 import NoteEditor from "./views/NoteEditor";
@@ -16,7 +13,6 @@ import MyClasses from "./views/MyClasses";
 import history from "./utils/history";
 import { connection_db } from "./utils/connection_db";
 import Classes from "./views/Classes";
-import { isAuthenticated } from "./utils/authenticated";
 
 function App() {
   const x = connection_db("SELECT * FROM `collabnotes`.`ESTUDIANTE`;", true);

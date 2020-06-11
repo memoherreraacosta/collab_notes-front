@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { useAuth0 } from "../auth/react-auth0-spa";
 import {
   Button,
   Collapse,
@@ -21,7 +20,6 @@ import { isAuthenticated } from "./../utils/authenticated";
 import { getName } from "./../utils/getData";
 
 const NavBar = () => {
-  const { loginWithRedirect, user } = useAuth0();
   const [isOpen, setIsOpen] = useState(false);
   const logout = () => {
     document.cookie = 'id=; Path=/; expires=Thu, 01-Jan-70 00:00:01 GMT;';

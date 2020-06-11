@@ -1,8 +1,6 @@
 import React from "react";
 import NotePreview from '../components/NotePreview';
-import SearchBar from '../components/SearchBar';
 import {connection_db} from './../utils/connection_db'
-import { render } from "@testing-library/react";
 
 class MyNotes extends React.Component {
     constructor(props){

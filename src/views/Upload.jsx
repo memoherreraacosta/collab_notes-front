@@ -5,12 +5,11 @@ import {connection_db} from './../utils/connection_db'
 import { ListGroup, ListGroupItem, Button } from 'reactstrap';
 import { getId } from "./../utils/getData";
 
-
 const config = {
     bucketName: 'a01632704',
     region: 'us-east-2',
-    accessKeyId: 'AKIAJQDQ5GG2OTRZAFWA',
-    secretAccessKey: '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'
+    accessKeyId: 'AKIAJMWJZKKKDCMN4ADQ',
+    secretAccessKey: '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'
 }
 
 const ReactS3Client = new S3(config);
@@ -30,7 +29,6 @@ class Upload extends React.Component {
         const classId = parseInt(urlParams.get('CLASS'))
         const className = urlParams.get('CLASSNAME')
         const user_id = getId();
-        const archivos =[];
         this.setState({class_id: classId})
         console.log("class id es ", classId);
 
@@ -48,7 +46,7 @@ class Upload extends React.Component {
         const promise = Promise.resolve(x1);
         promise.then((value) => {
             console.log("ANS: ", value);
-            this.setState({partofclass: value.length == 1});
+            this.setState({partofclass: value.length === 1});
         });
 
         this.upload2 = (e) =>{
